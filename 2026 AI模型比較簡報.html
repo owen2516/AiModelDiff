@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>2026 AI模型比較簡報</title>
+<style>
+  :root{
+    --ink:#1a1a2e; --sub:#5a5a76; --line:#e4e4ec; --bg:#f3f3f8; --accent:#1a1a2e;
+    --openai:#10a37f; --google:#4285f4; --anthropic:#d97757; --msft:#0078d4;
+    --xai:#000000; --meta:#0668e1; --deepseek:#4d6bfe; --pplx:#20808d;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%; margin:0;}
+  body{
+    font-family:"Noto Sans TC","Segoe UI",-apple-system,sans-serif;
+    background:var(--bg); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .deck{width:100vw; height:100vh; position:relative;}
+  .slide{
+    position:absolute; inset:0; display:none; flex-direction:column;
+    padding:70px 90px; background:#fff;
+  }
+  .slide.active{display:flex;}
+  .kicker{font-size:14px; font-weight:700; letter-spacing:2px; color:var(--sub); text-transform:uppercase; margin-bottom:14px;}
+  h1{font-size:46px; margin:0 0 10px; letter-spacing:-1px;}
+  h2{font-size:32px; margin:0 0 28px; letter-spacing:-0.5px; border-left:6px solid var(--ink); padding-left:16px;}
+  .sub{font-size:18px; color:var(--sub); margin-bottom:6px;}
+  .badge{display:inline-block; font-size:13px; font-weight:700; color:#fff; padding:5px 14px; border-radius:20px; margin-bottom:18px;}
+  .content{flex:1; display:flex; flex-direction:column; justify-content:center;}
+  ul.points{list-style:none; padding:0; margin:0; font-size:19px; line-height:1.6;}
+  ul.points li{margin-bottom:16px; padding-left:26px; position:relative;}
+  ul.points li:before{content:"›"; position:absolute; left:0; font-weight:900; color:var(--accent); font-size:22px; line-height:1.2;}
+  table.cmp{width:100%; border-collapse:collapse; font-size:14.5px;}
+  table.cmp th, table.cmp td{border:1px solid var(--line); padding:10px 12px; text-align:left;}
+  table.cmp th{background:#f1f1f6; font-weight:700;}
+  .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; flex:1; align-content:center;}
+  .card{border:1px solid var(--line); border-radius:10px; padding:22px; background:#fbfbfd;}
+  .card h3{margin:0 0 10px; font-size:19px;}
+  .card p{margin:0; font-size:14.5px; color:#333; line-height:1.6;}
+  .center-title{align-items:center; justify-content:center; text-align:center;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; margin-top:10px;}
+  .pagenum{font-size:13px; color:var(--sub);}
+  .nav{position:fixed; bottom:22px; right:26px; display:flex; gap:10px; z-index:10;}
+  .nav button{
+    border:none; background:var(--ink); color:#fff; width:42px; height:42px; border-radius:50%;
+    font-size:18px; cursor:pointer; opacity:0.85;
+  }
+  .nav button:hover{opacity:1;}
+  .progress{position:fixed; top:0; left:0; height:4px; background:var(--accent); z-index:10; transition:width .25s;}
+  @media print{
+    .nav, .progress{display:none;}
+    .slide{position:relative; display:flex !important; page-break-after:always; height:100vh;}
+    body{overflow:visible;}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <section class="slide active center-title">
+    <div class="content" style="align-items:center;">
+      <div class="kicker">2026年7月 · AI產業速覽</div>
+      <h1 style="font-size:56px;">主流 AI 模型比較</h1>
+      <div class="sub">ChatGPT・Gemini・Claude・Copilot・Grok・Meta AI・DeepSeek・Perplexity</div>
+      <div class="sub" style="margin-top:30px; font-size:14px;">整理日期：2026年7月24日｜資料來源：各家官網與近期新聞</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>總覽比較表</h2>
+    <div class="content">
+      <table class="cmp">
+        <tr><th>產品</th><th>最新模型</th><th>標準訂閱</th><th>核心亮點</th></tr>
+        <tr><td>ChatGPT</td><td>GPT-5.6</td><td>$20/月</td><td>ChatGPT Work 全能代理</td></tr>
+        <tr><td>Gemini</td><td>3.6 Flash</td><td>$19.99/月</td><td>成本降17%、效能提升</td></tr>
+        <tr><td>Claude</td><td>Sonnet 5 / Opus 4.8</td><td>$20/月</td><td>自主代理能力最強</td></tr>
+        <tr><td>Copilot</td><td>整合多模型</td><td>隨 M365 方案</td><td>Copilot Cowork 全球GA</td></tr>
+        <tr><td>Grok</td><td>Grok 4.5</td><td>約 $30/月</td><td>速度快、成本低</td></tr>
+        <tr><td>Meta AI</td><td>Muse Spark</td><td>免費</td><td>轉向閉源、用戶近6億</td></tr>
+        <tr><td>DeepSeek</td><td>V4 Pro/Flash</td><td>免費／開源</td><td>百萬token、對標一線</td></tr>
+        <tr><td>Perplexity</td><td>Deep Research</td><td>$20/月</td><td>整合進 M365</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="badge" style="background:var(--openai)">OpenAI</span>
+    <h2 style="border:none; padding:0;">ChatGPT</h2>
+    <div class="content">
+      <ul class="points">
+        <li><b>GPT-5.6</b> 三版本：Sol（旗艦推理／ultra 模式分派子模型）、Luna（速度優先）、Terra（日常平衡）</li>
+        <li><b>GPT-Live-1</b> 全雙工語音模型，可同時說與聽、自然被打斷，取代 Advanced Voice Mode</li>
+        <li><b>ChatGPT Work</b>：跨應用蒐集資訊、自動產出文件／試算表／簡報的代理工具</li>
+        <li>強化青少年帳號的家長監控與安全機制</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="badge" style="background:var(--google)">Google</span>
+    <h2 style="border:none; padding:0;">Gemini</h2>
+    <div class="content">
+      <ul class="points">
+        <li><b>Gemini 3.6 Flash／3.5 Flash-Lite</b> 上線，輸出定價降17%，程式碼基準 +12 分</li>
+        <li>知識截止日推進至 2026 年 3 月</li>
+        <li>內建工具＋自訂函式呼叫並用、Google Maps grounding、資安專用 Flash Cyber</li>
+        <li><b>Gemini 4</b> 已啟動最大規模預訓練</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="badge" style="background:var(--anthropic)">Anthropic</span>
+    <h2 style="border:none; padding:0;">Claude</h2>
+    <div class="content">
+      <ul class="points">
+        <li><b>Opus 4.8</b>：主打誠實可靠，程式碼瑕疵疏漏率降至 Opus 4.7 的 1/4</li>
+        <li><b>Sonnet 5</b>：效能逼近 Opus，自主代理能力最強，能規劃並自行使用瀏覽器／終端機</li>
+        <li>現為 Free／Pro 預設模型，優惠定價 $2／$10 每百萬 token（至 8/31）</li>
+        <li>手機發送指令、由 Claude 存取電腦執行任務的代理功能</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="badge" style="background:var(--msft)">Microsoft</span>
+    <h2 style="border:none; padding:0;">Copilot</h2>
+    <div class="content">
+      <ul class="points">
+        <li><b>Copilot Cowork</b> 全球 GA：規劃、執行並交付完整成果的代理系統</li>
+        <li>Deep Citations：直接連結至引用檔案的具體段落</li>
+        <li>Computer-using Agents GA，可操作網站與桌面應用程式</li>
+        <li><b>Claude Opus 4.8 已整合進 M365 Copilot</b>；Agent 365 提供代理治理平台</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="badge" style="background:var(--xai)">xAI</span>
+    <h2 style="border:none; padding:0;">Grok</h2>
+    <div class="content">
+      <ul class="points">
+        <li><b>Grok 4.5</b>（7/8發布）：目前最強模型，聚焦程式開發、代理與知識工作</li>
+        <li>Musk：「效能接近 Opus 4.7，但更快、token效率更高、成本更低」</li>
+        <li>已整合進 Grok Build、Cursor、SpaceXAI console</li>
+        <li>Grok Imagine：文字／圖片轉影片生成</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>其他值得關注</h2>
+    <div class="grid3">
+      <div class="card">
+        <h3 style="color:var(--meta)">Meta AI</h3>
+        <p>策略轉向閉源，推出 <b>Muse Spark</b>；Llama 系列累積下載超6.5億次，月活躍用戶近6億。</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--deepseek)">DeepSeek</h3>
+        <p><b>V4 Pro／Flash</b> 開源上線，支援百萬token上下文，宣稱部分任務超越 GPT-5.2、Gemini 3.0 Pro。</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--pplx)">Perplexity</h3>
+        <p>4500萬用戶、月查詢逾10億次；Deep Research 基於 Opus 4.6；已整合進 Microsoft 365。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>訂閱定價比較</h2>
+    <div class="content">
+      <table class="cmp">
+        <tr><th>層級</th><th>價格帶</th><th>代表方案</th></tr>
+        <tr><td>標準層</td><td>約 $20／月</td><td>ChatGPT Plus、Claude Pro、Google AI Pro、Perplexity Pro</td></tr>
+        <tr><td>進階層</td><td>約 $30／月</td><td>Grok 訂閱</td></tr>
+        <tr><td>頂級層</td><td>$100–250／月</td><td>Claude Max、ChatGPT Pro、Google AI Ultra</td></tr>
+        <tr><td>免費／開源</td><td>$0</td><td>Meta AI、DeepSeek</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>趨勢與結論</h2>
+    <div class="content">
+      <ul class="points">
+        <li><b>代理（Agentic AI）成主戰場</b>：從回答問題轉向直接完成完整工作成果</li>
+        <li><b>語音／多模態成標配</b>：全雙工語音、文字轉影片等生成能力普及</li>
+        <li><b>開源／閉源角色互換</b>：Meta 轉閉源，DeepSeek 持續開源施壓一線廠商</li>
+        <li><b>企業整合戰白熱化</b>：微軟走「多模型平台」策略，同時整合自家與外部模型</li>
+        <li><b>定價收斂</b>：標準層約 $20／月、頂級層約 $200／月已成業界共識</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button onclick="go(-1)">‹</button>
+  <button onclick="go(1)">›</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let idx = 0;
+  function render(){
+    slides.forEach((s,i)=>s.classList.toggle('active', i===idx));
+    document.getElementById('progress').style.width = ((idx+1)/slides.length*100)+'%';
+  }
+  function go(d){
+    idx = Math.min(slides.length-1, Math.max(0, idx+d));
+    render();
+  }
+  document.addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight'||e.key===' ') go(1);
+    if(e.key==='ArrowLeft') go(-1);
+  });
+  render();
+</script>
+</body>
+</html>

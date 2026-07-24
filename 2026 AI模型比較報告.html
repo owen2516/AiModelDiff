@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>2026 AI模型比較報告</title>
+<style>
+  :root{
+    --ink:#1a1a2e; --sub:#4a4a68; --line:#e4e4ec; --bg:#fbfbfd;
+    --openai:#10a37f; --google:#4285f4; --anthropic:#d97757; --msft:#0078d4;
+    --xai:#000000; --meta:#0668e1; --deepseek:#4d6bfe; --pplx:#20808d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:"Noto Sans TC","Segoe UI",-apple-system,sans-serif;
+    background:var(--bg); color:var(--ink); margin:0; padding:0;
+    line-height:1.75;
+  }
+  .page{max-width:880px; margin:0 auto; padding:64px 40px 100px;}
+  h1.title{font-size:34px; margin:0 0 6px; letter-spacing:-0.5px;}
+  .subtitle{color:var(--sub); font-size:15px; margin-bottom:48px;}
+  h2{font-size:22px; border-left:5px solid var(--ink); padding-left:12px; margin-top:56px; margin-bottom:16px;}
+  h3{font-size:17px; margin-top:28px; margin-bottom:8px;}
+  .badge{display:inline-block; font-size:12px; font-weight:600; color:#fff; padding:3px 10px; border-radius:20px; margin-right:8px; vertical-align:middle;}
+  p{margin:0 0 14px; color:#2b2b3d;}
+  .meta-line{color:var(--sub); font-size:13px; margin-bottom:10px;}
+  table{width:100%; border-collapse:collapse; margin:20px 0 8px; font-size:13.5px;}
+  th,td{border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top;}
+  th{background:#f1f1f6; font-weight:700;}
+  tr:nth-child(even) td{background:#f9f9fc;}
+  .source-list{font-size:12.5px; color:var(--sub);}
+  .source-list li{margin-bottom:4px;}
+  .callout{background:#f4f4fa; border-left:4px solid var(--ink); padding:14px 18px; border-radius:4px; font-size:14px; margin:20px 0;}
+  .num-list{padding-left:22px; margin:0 0 14px;}
+  .num-list li{margin-bottom:8px;}
+  hr{border:none; border-top:1px solid var(--line); margin:56px 0;}
+  footer{color:var(--sub); font-size:12px; text-align:center; margin-top:60px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1 class="title">2026年主流 AI 模型比較報告</h1>
+  <div class="subtitle">整理日期：2026年7月24日｜資料來源：各家官方網站與近期新聞報導</div>
+
+  <p>本報告彙整 ChatGPT（OpenAI）、Gemini（Google）、Claude（Anthropic）、Microsoft Copilot、Grok（xAI）、Meta AI、DeepSeek、Perplexity 等八家主要 AI 產品截至 2026 年 7 月的最新動態、核心功能與訂閱定價，供快速掌握目前 AI 市場的競爭格局。</p>
+
+  <h2>一、總覽比較表</h2>
+  <table>
+    <tr><th>產品 / 公司</th><th>最新旗艦模型（2026/7）</th><th>標準訂閱</th><th>頂級訂閱</th><th>核心亮點</th></tr>
+    <tr><td><b>ChatGPT</b><br>OpenAI</td><td>GPT-5.6（Sol／Luna／Terra）</td><td>Plus $20/月</td><td>Pro $200/月</td><td>ChatGPT Work 全能代理、GPT-Live-1 全雙工語音</td></tr>
+    <tr><td><b>Gemini</b><br>Google</td><td>Gemini 3.6 Flash／3.5 Flash-Lite</td><td>Google AI Pro $19.99/月</td><td>Google AI Ultra $249.99/月</td><td>成本降17%、程式碼基準+12分、Gemini 4 已開始預訓練</td></tr>
+    <tr><td><b>Claude</b><br>Anthropic</td><td>Sonnet 5／Opus 4.8</td><td>Claude Pro $20/月</td><td>Claude Max $100–200/月</td><td>自主代理能力最強、程式碼可靠度大幅提升</td></tr>
+    <tr><td><b>Copilot</b><br>Microsoft</td><td>整合 GPT-5.6／Claude Opus 4.8</td><td>M365 Copilot（隨 M365 方案）</td><td>企業方案另計</td><td>Copilot Cowork 全球GA、Agent 365 治理平台</td></tr>
+    <tr><td><b>Grok</b><br>xAI</td><td>Grok 4.5</td><td>約 $30/月</td><td>—</td><td>對標 Opus 4.7、速度快且token成本低</td></tr>
+    <tr><td><b>Meta AI</b><br>Meta</td><td>Muse Spark（閉源）／Llama 4</td><td>免費（App內建）</td><td>—</td><td>策略轉向閉源、月活躍用戶近6億</td></tr>
+    <tr><td><b>DeepSeek</b><br>DeepSeek</td><td>DeepSeek V4（Pro／Flash）</td><td>免費／開源</td><td>API另計</td><td>100萬token上下文、開源、對標一線模型</td></tr>
+    <tr><td><b>Perplexity</b><br>Perplexity AI</td><td>Deep Research（基於 Opus 4.6）</td><td>Perplexity Pro $20/月</td><td>企業方案另計</td><td>4500萬用戶、整合進 M365、搜尋+代理雙強</td></tr>
+  </table>
+
+  <h2>二、各家詳細動態</h2>
+
+  <h3><span class="badge" style="background:var(--openai)">OpenAI</span>ChatGPT</h3>
+  <p>OpenAI 於 2026 年 7 月推出 <b>GPT-5.6</b> 三種版本：Sol（旗艦推理，可透過 "ultra" 模式分派任務給子模型）、Luna（速度優先）、Terra（日常工作的平衡選擇）。同時發表新一代全雙工語音模型 <b>GPT-Live-1</b> 與 GPT-Live-1 mini，可同時說話與聆聽、自然被打斷，並取代既有的 Advanced Voice Mode。此外推出 <b>ChatGPT Work</b>，一款可跨連接應用程式與檔案蒐集資訊，自動產出文件、試算表、簡報的代理工具；並針對青少年帳號強化家長監控與安全機制。</p>
+
+  <h3><span class="badge" style="background:var(--google)">Google</span>Gemini</h3>
+  <p>Google 於 7 月發布 <b>Gemini 3.6 Flash</b> 與 <b>Gemini 3.5 Flash-Lite</b>，輸出定價較前代降低約 17%，程式碼相關基準分數提升 12 分，並在多項測試中對比 GPT-5.6、Grok 4.5、Claude Sonnet 5 具競爭力；知識截止日也推進至 2026 年 3 月。新增內建工具與自訂函式呼叫可並用、Google Maps 定位資訊查詢，以及聚焦資安漏洞偵測的 Gemini 3.5 Flash Cyber。Google 同時宣布已啟動 <b>Gemini 4</b> 的大規模預訓練。</p>
+
+  <h3><span class="badge" style="background:var(--anthropic)">Anthropic</span>Claude</h3>
+  <p><b>Claude Opus 4.8</b>（5月底發布）將重心放在誠實與可靠性，官方數據顯示其忽略程式碼瑕疵的機率僅為 Opus 4.7 的四分之一。<b>Claude Sonnet 5</b>（6月發布）效能已逼近 Opus，被稱為目前最具自主代理能力的 Sonnet 模型，能自行規劃、使用瀏覽器與終端機並長時間自主運行，現為 Free／Pro 方案的預設模型，並提供每百萬輸入 $2、輸出 $10 的優惠定價（至 8/31）。3 月起也新增可從手機發送指令、由 Claude 存取電腦執行任務的代理功能。</p>
+
+  <h3><span class="badge" style="background:var(--msft)">Microsoft</span>Copilot</h3>
+  <p><b>Copilot Cowork</b> 已全球正式上線，屬於能規劃、執行並交付完整成果的代理系統；新增 Deep Citations 功能可直接連結至引用檔案的具體段落。M365 Copilot App 新增 Chat／Cowork 模式切換。在 Copilot Studio 中，可操作網站與桌面應用程式的 Computer-using Agents 已 GA，且 <b>Claude Opus 4.8 已整合進 M365 Copilot</b>，支援複雜多步驟任務；集中管理代理程式權限與行為的 <b>Microsoft Agent 365</b> 也已正式上線。微軟的策略明顯走向「多模型平台」，同時整合自家與 OpenAI、Anthropic 的模型。</p>
+
+  <h3><span class="badge" style="background:var(--xai)">xAI</span>Grok</h3>
+  <p><b>Grok 4.5</b>（7月8日發布）為 xAI 目前最強模型，聚焦程式開發、代理與知識工作；Musk 形容其「效能接近 Opus 4.7，但速度更快、token 效率更高、成本更低」，直接對標 Anthropic。已整合進 Grok Build、Cursor 與 SpaceXAI console。此前的 Grok 4.3 Beta（4月）已支援原生影片輸入與文件／試算表／簡報生成；Grok Imagine 則主打文字與圖片轉影片功能。</p>
+
+  <h3><span class="badge" style="background:var(--meta)">Meta</span>Meta AI</h3>
+  <p>Meta 先前推出開放權重、採 MoE 架構的多模態模型 <b>Llama 4 Scout／Maverick</b>，但反應未如預期。公司策略隨後明顯轉向：由 Alexandr Wang 領軍推出<b>閉源</b>的 <b>Muse Spark</b> 模型，強調多模態感知、推理與代理任務表現，官方表示「未來版本有機會重新開源」。目前 Meta AI 月活躍用戶接近 6 億，Llama 系列累計下載超過 6.5 億次，仍是被廣泛採用的開源基礎。</p>
+
+  <h3><span class="badge" style="background:var(--deepseek)">DeepSeek</span>DeepSeek</h3>
+  <p>中國新創 DeepSeek 於 4 月底發布 <b>DeepSeek V4</b>，分為 V4 Pro（1.6T 總參數／49B 啟用參數，聚焦高品質推理）與 V4 Flash（284B 總參數／13B 啟用參數，主打速度與低成本）兩系列，並採用「混合注意力架構」改善長對話記憶能力，支援 100 萬 token 上下文。官方宣稱旗艦版本在部分推理任務上超越 GPT-5.2 與 Gemini 3.0 Pro。模型持續開源，運算則與華為合作採用 Ascend 950 晶片。</p>
+
+  <h3><span class="badge" style="background:var(--pplx)">Perplexity</span>Perplexity AI</h3>
+  <p>Perplexity 目前擁有超過 4500 萬使用者，每月查詢量突破 10 億次，估值達 226 億美元。近期升級涵蓋 Deep Research（現運行於 Claude Opus 4.6）、多模型 Council 功能、記憶能力強化與更精簡的介面；<b>Perplexity Computer</b> 已直接整合進 Microsoft 365（Word、Excel、PowerPoint、Outlook、Teams），是重要的企業通路擴張。API 平台也擴展為 Agent API、Search API、Embeddings API 及即將推出的 Sandbox API，朝「與模型無關的代理建構平台」發展。</p>
+
+  <h2>三、訂閱定價比較</h2>
+  <table>
+    <tr><th>層級</th><th>價格帶</th><th>代表方案</th></tr>
+    <tr><td>標準層</td><td>約 $20／月</td><td>ChatGPT Plus $20、Claude Pro $20、Google AI Pro $19.99、Perplexity Pro $20</td></tr>
+    <tr><td>進階層</td><td>約 $30／月</td><td>Grok 訂閱 $30</td></tr>
+    <tr><td>頂級層</td><td>$100–250／月</td><td>Claude Max $100/$200、ChatGPT Pro $200、Google AI Ultra $249.99</td></tr>
+    <tr><td>團隊／企業</td><td>每人 $25–30／月起</td><td>ChatGPT Team、Claude Team 等</td></tr>
+  </table>
+  <div class="callout">2026 年的 AI 訂閱市場已收斂出清楚的價格帶：約 20 美元的標準層可取得旗艦模型的基本存取量，200 美元左右則是「近乎無限量」的頂級層。Meta AI 與 DeepSeek 則以免費／開源模式參與競爭，走的是不同商業路線。</div>
+
+  <h2>四、趨勢觀察</h2>
+  <ol class="num-list">
+    <li><b>代理（Agentic AI）成為主戰場</b>：ChatGPT Work、Copilot Cowork、Claude 的自主代理能力、Perplexity Computer 均指向同一方向——AI 不再只是回答問題，而是直接完成整份文件、試算表或多步驟工作流程。</li>
+    <li><b>語音與多模態成為標配</b>：GPT-Live-1 全雙工語音、Grok Imagine 影片生成，顯示對話與生成能力已不限於文字。</li>
+    <li><b>開源與閉源路線分歧</b>：Meta 從開源 Llama 轉向閉源 Muse Spark，而 DeepSeek 持續以開源、高性價比模型挑戰一線廠商，形成有趣的角色互換。</li>
+    <li><b>企業整合戰白熱化</b>：微軟同時在 M365 Copilot 中整合自家模型、OpenAI GPT 與 Anthropic Claude，走「多模型平台」策略，而非單押一家。</li>
+    <li><b>定價逐漸收斂</b>：主要廠商的標準訂閱多落在 20 美元左右，頂級訂閱則普遍拉高到 200 美元上下，反映運算成本與市場定位已趨於一致。</li>
+    <li><b>中美 AI 競賽持續</b>：DeepSeek V4 直接對標 GPT、Gemini、Claude 等模型，顯示中國廠商在成本與開源策略上持續施壓歐美領先者。</li>
+  </ol>
+
+  <hr>
+  <h2>資料來源</h2>
+  <ul class="source-list">
+    <li>OpenAI — <a href="https://techcrunch.com/2026/07/08/openai-releases-new-voice-models-for-more-natural-live-conversations/">TechCrunch：OpenAI releases new voice models</a>／<a href="https://www.cnbc.com/2026/07/08/openai-expanding-gpt-5point6-ai-model-release-ending-government-limits.html">CNBC：GPT-5.6 release</a>／<a href="https://www.axios.com/2026/07/09/ai-openai-gpt-release">Axios：GPT-5.6 and ChatGPT Work</a></li>
+    <li>Google — <a href="https://9to5google.com/2026/07/21/gemini-3-6-flash-launch/">9to5Google：Gemini 3.6 Flash</a>／<a href="https://blog.google/products/gemini/gemini-3/">Google Blog：Gemini 3</a></li>
+    <li>Anthropic — <a href="https://www.anthropic.com/news/claude-sonnet-5">Anthropic：Introducing Claude Sonnet 5</a>／<a href="https://www.macrumors.com/2026/06/30/anthropic-claude-sonnet-5/">MacRumors：Claude Sonnet 5</a></li>
+    <li>Microsoft — <a href="https://techcommunity.microsoft.com/blog/microsoft365copilotblog/what%e2%80%99s-new-in-microsoft-365-copilot--june-2026/4529572">Microsoft Community Hub：M365 Copilot June 2026</a>／<a href="https://www.neowin.net/news/here-are-all-the-new-features-added-to-microsoft-365-copilot-in-june-2026/">Neowin</a></li>
+    <li>xAI — <a href="https://www.fullstack.com/labs/resources/blog/grok-4-5-a-closer-look-at-xais-latest-model">Fullstack：Grok 4.5</a>／<a href="https://www.nxcode.io/resources/news/grok-5-release-date-latest-news-2026">NxCode：Grok 5 update</a></li>
+    <li>Meta — <a href="https://www.cnbc.com/2026/04/08/meta-debuts-first-major-ai-model-since-14-billion-deal-to-bring-in-alexandr-wang.html">CNBC：Meta debuts Muse Spark</a>／<a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/">Meta AI Blog：Llama 4</a></li>
+    <li>DeepSeek — <a href="https://techcrunch.com/2026/04/24/deepseek-previews-new-ai-model-that-closes-the-gap-with-frontier-models/">TechCrunch：DeepSeek V4</a>／<a href="https://www.bloomberg.com/news/articles/2026-04-24/deepseek-unveils-newest-flagship-a-year-after-ai-breakthrough">Bloomberg：DeepSeek V4</a></li>
+    <li>Perplexity — <a href="https://www.secondtalent.com/resources/perplexity-ai-features-capabilities-2026/">Second Talent：Perplexity AI Features 2026</a>／<a href="https://www.toolkitly.com/latest-updates/perplexity-ai">Toolkitly：Perplexity updates</a></li>
+    <li>定價比較 — <a href="https://www.sentisight.ai/ai-price-comparison-gemini-chatgpt-claude-grok/">Sentisight：2026 AI Subscription Prices</a>／<a href="https://aionx.co/ai-comparisons/ai-pricing-comparison/">AIonX：AI Pricing Comparison 2026</a></li>
+  </ul>
+
+  <footer>本報告由 Claude（Cowork）整理自公開官網與新聞資料，僅供參考，各項定價與功能請以官方最新公告為準。</footer>
+</div>
+</body>
+</html>
